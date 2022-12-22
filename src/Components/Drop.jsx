@@ -15,18 +15,18 @@ const Drop = ({ data }) => {
     const dragItem = useRef()
 
 
-    // Drag Start Function to check which element is to be dragg
+    // Drag Start Function to check which element is to be drag
+
     const handleStart = (e, query) => {
         dragItem.current = query
         dragElement.current = e.target
         dragElement.current.addEventListener("dragend", handleEnd)
-        setTimeout(() => {
-            setDrag(true)
-        }, 0)
+        setDrag(true)
 
     }
 
     // Main Drag Function to Update the data with the help of drag element
+
     const handleDrag = (e, query) => {
         const cur_item = dragItem.current
         if (dragElement.current !== e.target) {
@@ -43,6 +43,7 @@ const Drop = ({ data }) => {
     }
 
     //Drag End Function
+
     const handleEnd = () => {
         dragElement.current.removeEventListener("dragend", handleEnd)
         dragItem.current = null
@@ -52,6 +53,7 @@ const Drop = ({ data }) => {
 
 
     // On Drag change the style of the element
+
     const myStyle = (query, color) => {
         const cur = dragItem.current
         if (cur.group_I === query.group_I && cur.item_I === query.item_I) {
@@ -60,7 +62,7 @@ const Drop = ({ data }) => {
         return color
     }
 
-
+    //Setting Up color on Drag
     const myStyleColor = (query, color) => {
         const cur = dragItem.current
         if (cur.group_I === query.group_I && cur.item_I === query.item_I) {
@@ -71,6 +73,7 @@ const Drop = ({ data }) => {
 
 
     //Delete Function delete the data and update the state
+
     const handleDelete = (e, query) => {
         setMydata(pre => {
             let newData = JSON.parse(JSON.stringify(pre))
@@ -80,6 +83,7 @@ const Drop = ({ data }) => {
         })
     }
     //Add Function to add the data and update the state
+    
     const handleAdd = (e, query) => {
         e.preventDefault()
         group == "" ? query.group_I : query.group_I = group
