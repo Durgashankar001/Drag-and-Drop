@@ -58,6 +58,8 @@ body {
 
 .cross p {
   text-align: right;
+  width: max-content;
+  margin-left: 95%;
 }
 
 .title {
